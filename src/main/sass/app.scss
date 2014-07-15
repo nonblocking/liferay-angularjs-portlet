@@ -1,0 +1,42 @@
+
+.angularjs-portlet-user-table {
+  border-collapse: collapse;
+  border: 1px solid #999;
+
+  tr {
+    &.even {
+      background: #eee;
+    }
+  }
+
+  th {
+    padding: 5px;
+    border-bottom: 1px solid #999;
+  }
+
+  td {
+    padding: 5px;
+  }
+}
+
+.angularjs-portlet-controls {
+  a {
+    &,&:visited {
+      text-decoration: none;
+      padding: 5px 0;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.disabled {
+      &,&:hover {
+        text-decoration: none;
+        color: #999;
+        cursor: default;
+      }
+    }
+  }
+
+}

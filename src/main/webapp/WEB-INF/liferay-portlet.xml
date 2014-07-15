@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 6.2.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_6_2_0.dtd">
+<liferay-portlet-app>
+
+    <portlet>
+        <portlet-name>liferay-angularjs-portlet</portlet-name>
+        <instanceable>false</instanceable>
+        <private-session-attributes>true</private-session-attributes>
+        <!--
+            Without this passing parameters in resource requests would not work in Liferay 6.2
+            See: http://www.coderexception.com/C36B1z3bPXQSxXJi/spring-portlet-ajax-call-no-parameter-found
+        -->
+        <requires-namespaced-parameters>false</requires-namespaced-parameters>
+        <ajaxable>true</ajaxable>
+        <header-portlet-css>/css/app.css</header-portlet-css>
+        <footer-portlet-javascript>/js/vendor.js</footer-portlet-javascript>
+        <footer-portlet-javascript>/js/app.js</footer-portlet-javascript>
+    </portlet>
+
+</liferay-portlet-app>

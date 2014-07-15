@@ -1,0 +1,10 @@
+{
+    "name": "liferay-angularjs-portlet",
+    "version": "1.0.0",
+    "authors": [
+        "Juergen Kofler"
+    ],
+    "dependencies": {
+        "angular": "1.2.19"
+    }
+}
