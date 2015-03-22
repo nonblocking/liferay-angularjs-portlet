@@ -2,18 +2,21 @@
     "total": 13,
     "users": [
         {
+            "userId": 10,
             "screenName": "test11",
             "firstName": "First11",
             "lastName": "Last11",
             "emailAddress": "test11@nonblocking.at"
         },
         {
+            "userId": 11,
             "screenName": "test12",
             "firstName": "First12",
             "lastName": "Last12",
             "emailAddress": "test12@nonblocking.at"
         },
         {
+            "userId": 12,
             "screenName": "test13",
             "firstName": "First13",
             "lastName": "Last13",

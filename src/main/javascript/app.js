@@ -1,15 +1,16 @@
 
 
-angular.module('angularjs-portlet', [])
+angular.module('angularjsPortletDemo', ['angularjsPortletDemoBackend'])
 
-    .controller('MainController', function ($scope, backend) {
-
-        $scope.authenticatedUser = angularJsPortletAuthenticatedUser;
-
+    .controller('MainController', function ($scope, backend, templates, authenticatedUser) {
+        $scope.authenticatedUser = authenticatedUser;
         $scope.entriesPerPage = 10;
         $scope.currentPage = 0;
         $scope.totalEntries = 0;
         $scope.users = [];
+        $scope.selectedUser = {};
+
+        $scope.currentTemplate = templates[0];
 
         $scope.totalPages = function() {
             return Math.floor($scope.totalEntries / $scope.entriesPerPage) + 1;
@@ -38,7 +39,7 @@ angular.module('angularjs-portlet', [])
         };
 
         $scope.refreshUsers = function() {
-            backend.usersPromise( $scope.currentPage * $scope.entriesPerPage, $scope.entriesPerPage)
+            backend.userListPromise( $scope.currentPage * $scope.entriesPerPage, $scope.entriesPerPage)
                 .success(function(data) {
                     $scope.totalEntries = data.total;
                     $scope.users = data.users;
@@ -47,41 +48,28 @@ angular.module('angularjs-portlet', [])
                 });
         };
 
+        $scope.showList = function() {
+            $scope.currentTemplate = templates[0];
+            $scope.selectedUser = {};
+        };
+
+        $scope.showDetails = function(userId) {
+            $scope.currentTemplate = templates[1];
+
+            backend.userDetailPromise(userId)
+                .success(function(data) {
+                    $scope.selectedUser = data;
+                }).error(function(data, status) {
+                    alert("Error: " + data);
+                });
+        };
+
         $scope.refreshUsers();
     })
 
-    .factory('backend', function($http) {
-
-        var portletBackend = {
-            usersPromise: function(startIndex, limit) {
-                return this._ajaxPost("users", { "startIndex": startIndex, "limit": limit });
-            },
-
-            _ajaxPost: function(method, params){
-                return $http({
-                    url: angularJsPortletAjaxURL + "&p_p_resource_id=" + method,
-                    method: 'POST',
-                    params: params
-                });
-            }
-        };
-
-        var testBackend = {
-            usersPromise: function(startIndex, limit) {
-                var params = { "startIndex": startIndex, "limit": limit };
-                var jsonFile = startIndex === 0 ? "users.json" : "users2.json";
-
-                return $http({
-                    url: angularJsPortletAjaxURL + jsonFile,
-                    method: 'GET',
-                    params: params
-                });
-            }
-        };
-
-        if (angularJsPortletStandalone) {
-            return testBackend;
-        } else {
-            return portletBackend;
-        }
+    .factory('templates', function(portletAppContextPath) {
+        return [
+            { "name": "User List", url: portletAppContextPath + "templates/userList.html" },
+            { "name": "User Detail", url: portletAppContextPath + "templates/userDetail.html" }
+        ];
     });

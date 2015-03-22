@@ -20,5 +20,4 @@
         <property name="templateEngine" ref="templateEngine" />
     </bean>
 
-
 </beans>

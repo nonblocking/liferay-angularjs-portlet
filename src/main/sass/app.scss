@@ -1,33 +1,17 @@
 
-.angularjs-portlet-user-table {
-  border-collapse: collapse;
-  border: 1px solid #999;
+$COLOR_FONT: #343333;
+$COLOR_RED: #923132;
 
-  tr {
-    &.even {
-      background: #eee;
-    }
-  }
+.angularjs-portlet-demo {
+  color: $COLOR_FONT;
 
-  th {
-    padding: 5px;
-    border-bottom: 1px solid #999;
-  }
-
-  td {
-    padding: 5px;
-  }
-}
-
-.angularjs-portlet-controls {
   a {
-    &,&:visited {
-      text-decoration: none;
-      padding: 5px 0;
-    }
+    color: $COLOR_FONT;
+    text-decoration: underline;
+    padding: 5px 0;
 
     &:hover {
-      text-decoration: underline;
+      color: $COLOR_RED;
     }
 
     &.disabled {
@@ -39,4 +23,25 @@
     }
   }
 
+  .angularjs-portlet-user-table {
+    border-collapse: collapse;
+    border: 1px solid #999;
+
+    tr {
+      &.even {
+        background: #eee;
+      }
+    }
+
+    th {
+      padding: 5px;
+      text-align: left;
+      border-bottom: 1px solid #999;
+    }
+
+    td {
+      padding: 5px;
+    }
+  }
 }
+

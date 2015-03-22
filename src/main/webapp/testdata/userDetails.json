@@ -1,0 +1,12 @@
+{
+  "screenName": "test1",
+  "firstName": "First1",
+  "lastName": "Last1",
+  "emailAddress": "test1@nonblocking.at",
+  "lastLoginDate": 1411809626460,
+  "lastLoginIp": "127.0.0.1",
+  "languageId": "en_US",
+  "userGroups": "Group1",
+  "roles": "User,Power User"
+}
+

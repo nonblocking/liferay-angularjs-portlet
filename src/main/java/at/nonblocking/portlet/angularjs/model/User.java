@@ -2,6 +2,7 @@ package at.nonblocking.portlet.angularjs.model;
 
 public class User {
 
+    private long userId;
     private String screenName;
     private String firstName;
     private String lastName;
@@ -10,16 +11,25 @@ public class User {
     public User() {
     }
 
-    public User(String screenName, String firstName, String lastName, String emailAddress) {
+    public User(long userId, String screenName, String firstName, String lastName, String emailAddress) {
+        this.userId = userId;
         this.screenName = screenName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
     }
 
-    public String getScreenName() {
-        return screenName;
+    public long getUserId() {
+      return userId;
     }
+
+    public void setUserId(long userId) {
+      this.userId = userId;
+    }
+
+    public String getScreenName() {
+          return screenName;
+      }
 
     public void setScreenName(String screenName) {
         this.screenName = screenName;

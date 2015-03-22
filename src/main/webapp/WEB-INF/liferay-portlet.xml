@@ -4,7 +4,7 @@
 
     <portlet>
         <portlet-name>liferay-angularjs-portlet</portlet-name>
-        <instanceable>false</instanceable>
+        <instanceable>true</instanceable>
         <private-session-attributes>true</private-session-attributes>
         <!--
             Without this passing parameters in resource requests would not work in Liferay 6.2

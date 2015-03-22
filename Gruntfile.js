@@ -1,6 +1,7 @@
 
 var jsApp = [
-    'src/main/javascript/app.js'
+    'src/main/javascript/app.js',
+    'src/main/javascript/backend.js'
 ];
 
 var jsVendor = [

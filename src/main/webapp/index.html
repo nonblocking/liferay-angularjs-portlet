@@ -4,42 +4,50 @@
 <head>
     <title>AngularJS Portlet Demo</title>
     <link rel="stylesheet" href="css/app.css" th:if="${standalone}" />
-
-    <script type="text/javascript" th:inline="javascript">
-        var angularJsPortletAjaxURL = /*[[${ajaxURL}]]*/ "/testdata/";
-        var angularJsPortletStandalone = /*[[${standalone}]]*/ true;
-        var angularJsPortletAuthenticatedUser = /*[[${authenticatedUser}]]*/ "anonymous";
-    </script>
 </head>
 
 <body>
-    <div data-ng-app="angularjs-portlet" data-ng-controller="MainController">
-        <h2>AngularJS Portlet</h2>
+    <div id="angularjsPortletDemo" class="angularjs-portlet-demo" th:id="${portletId}" ng-controller="MainController">
+        <h2>AngularJS Portlet Demo v2</h2>
         <p>Authenticated User: <strong>{{authenticatedUser}}</strong></p>
 
-        <h3>Portal Users:</h3>
-        <table class="angularjs-portlet-user-table">
-            <tr>
-                <th>Screen Name</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>EMail Address</th>
-            </tr>
-            <tr data-ng-repeat="user in users" data-ng-class-even="'even'">
-                <td>{{user.screenName}}</td>
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.emailAddress}}</td>
-            </tr>
-        </table>
-        <div class="angularjs-portlet-controls">
-            Page {{currentPage + 1}} of {{totalPages()}}
-            &nbsp;
-            <a href="#" data-ng-click="previousPage()" data-ng-class="{ 'disabled': isFirstPage() }">Previous Page</a>
-            |
-            <a href="#" data-ng-click="nextPage()" data-ng-class="{ 'disabled': isLastPage() }">Next Page</a>
+        <div ng-include="currentTemplate.url">
         </div>
     </div>
+
+    <!-- Bootstrap Angular -->
+    <script type="application/javascript" th:inline="javascript">
+        (function() {
+            if (typeof(AUI) !== 'undefined') {
+                /* We are within Liferay */
+                AUI().ready(function() {
+                    startAngular();
+                });
+            } else {
+                document.addEventListener("DOMContentLoaded", function(event) {
+                    startAngular();
+                });
+            }
+
+            function startAngular() {
+                var ajaxURL = /*[[${ajaxURL}]]*/ "/testdata/";
+                var isStandalone = /*[[${standalone}]]*/ true;
+                var authenticatedUser = /*[[${authenticatedUser}]]*/ "anonymous";
+                var portletId = /*[[${portletId}]]*/ 'angularjsPortletDemo';
+                var portletAppContextPath = /*[[${portletAppContextPath}]]*/ '';
+
+                var app = angular.module('angularjsPortletDemo');
+                app.value('ajaxUrl', ajaxURL);
+                app.value('isStandalone', isStandalone);
+                app.value('authenticatedUser', authenticatedUser);
+                app.value('portletId', portletId);
+                app.value('portletAppContextPath', portletAppContextPath);
+
+                var appRootElem = document.getElementById(portletId);
+                angular.bootstrap(appRootElem, ['angularjsPortletDemo']);
+            }
+        })();
+    </script>
 
     <script type="application/javascript" src="js/vendor.js" th:if="${standalone}"></script>
     <script type="application/javascript" src="js/app.js" th:if="${standalone}"></script>
