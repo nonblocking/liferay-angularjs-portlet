@@ -37,11 +37,11 @@
                 var portletAppContextPath = /*[[${portletAppContextPath}]]*/ '';
 
                 var app = angular.module('angularjsPortletDemo');
-                app.value('ajaxUrl', ajaxURL);
-                app.value('isStandalone', isStandalone);
-                app.value('authenticatedUser', authenticatedUser);
-                app.value('portletId', portletId);
-                app.value('portletAppContextPath', portletAppContextPath);
+                app.constant('ajaxUrl', ajaxURL);
+                app.constant('isStandalone', isStandalone);
+                app.constant('authenticatedUser', authenticatedUser);
+                app.constant('portletId', portletId);
+                app.constant('portletAppContextPath', portletAppContextPath);
 
                 var appRootElem = document.getElementById(portletId);
                 angular.bootstrap(appRootElem, ['angularjsPortletDemo']);
