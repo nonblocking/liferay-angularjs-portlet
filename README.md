@@ -30,7 +30,6 @@ Drop the generated _liferay-angularjs-portlet-*.war_ file into the *{liferay-hom
 
 Run **grunt server** in the root directory of the project. The webapp will be available on *localhost:9000*.
 
-
 ## Notes
 
 * To run the portlet on a Liferay 6.1 portal two files need to be changed:  
@@ -39,6 +38,7 @@ Run **grunt server** in the root directory of the project. The webapp will be av
 * The AngularJS portlet in this demonstrator is **instanceable**, which means that you can place it multiple times on a single portal page.
 * If you plan to make a whole suite of AngularJS portlets you should put all JavaScript base libraries and base modules into your theme
   (instead of shipping it with every single portlet).
+* In the standalone version live-reload is activated, so whenever you change a SASS or JS file the browser will refresh automatically.  
 * In a real world app **don't forget Java and JavaScript unit tests**!
 
 ## Changes in version 2

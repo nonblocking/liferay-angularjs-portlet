@@ -48,10 +48,11 @@ module.exports = function(grunt) {
                 }
             },
 
-            ngmin: {
+            ngAnnotate: {
                 jsApp : {
-                    src: 'src/main/webapp/js/app.js',
-                    dest: 'src/main/webapp/js/app.js'
+                    files: {
+                        'src/main/webapp/js/app.js': 'src/main/webapp/js/app.js'
+                    }
                 }
             },
 
@@ -101,7 +102,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-ngmin');
+    grunt.loadNpmTasks('grunt-ng-annotate');
 
     grunt.registerTask('server', function(target) {
         grunt.task.run([ 'jshint', 'sass:dev', 'concat:jsVendor', 'concat:jsApp', 'connect:livereload', 'watch']);
@@ -111,5 +112,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [ 'jshint', 'sass:dev', 'concat:jsVendor', 'concat:jsApp'  ]);
 
     //Distribution task
-    grunt.registerTask('dist', [  'jshint', 'sass:dist', 'concat:jsVendor', 'concat:jsApp', 'ngmin:jsApp', 'uglify:jsApp' ]);
+    grunt.registerTask('dist', [  'jshint', 'sass:dist', 'concat:jsVendor', 'concat:jsApp', 'ngAnnotate:jsApp', 'uglify:jsApp' ]);
 };

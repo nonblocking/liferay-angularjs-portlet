@@ -2,47 +2,48 @@
 
 angular.module('angularjsPortletDemoBackend', [])
 
-    .service('backend', function($http, ajaxUrl, isStandalone) {
+    .factory('backend', function($http, $httpParamSerializerJQLike, ajaxUrl, isStandalone) {
 
-        var portletBackend = {
-            userListPromise: function(startIndex, limit) {
-                return this._ajaxPost("userList", { "startIndex": startIndex, "limit": limit });
-            },
+        var PortletBackend = function() {
+            this.userListPromise = function(startIndex, limit) {
+                return ajaxPost("userList", { "startIndex": startIndex, "limit": limit });
+            };
 
-            userDetailPromise: function(userId) {
-                return this._ajaxPost("userDetail", { "userId": userId });
-            },
+            this.userDetailPromise = function(userId) {
+                return ajaxPost("userDetail", { "userId": userId });
+            };
 
-            _ajaxPost: function(method, params){
+            function ajaxPost(method, data){
                 return $http({
                     url: ajaxUrl + "&p_p_resource_id=" + method,
                     method: 'POST',
-                    params: params
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $httpParamSerializerJQLike(data)
                 });
             }
         };
 
-        var testBackend = {
-            userListPromise: function(startIndex, limit) {
+        var TestBackend = function() {
+            this.userListPromise = function(startIndex, limit) {
                 var jsonFile = startIndex === 0 ? 'users.json' : 'users2.json';
 
                 return $http({
                     url: ajaxUrl + jsonFile,
                     method: 'GET'
                 });
-            },
+            };
 
-            userDetailPromise: function(userId) {
+            this.userDetailPromise = function(userId) {
                 return $http({
                     url: ajaxUrl + 'userDetails.json',
                     method: 'GET'
                 });
-            }
+            };
         };
 
         if (isStandalone) {
-            return testBackend;
+            return new TestBackend();
         } else {
-            return portletBackend;
+            return new PortletBackend();
         }
     });
