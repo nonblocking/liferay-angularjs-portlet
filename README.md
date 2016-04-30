@@ -16,9 +16,9 @@ The demonstrator consists of two parts:
 * [node.js](http://nodejs.org/) to build and run the HTML5/JavaScript code
 * [SASS](http://sass-lang.com/) to compile the Sassy CSS into CSS
 
-### Create a WAR file
+### Create the WAR file
 
-Just run **mvn package**
+Just run **mvn package** on the command line.
 
 ## Run
 
