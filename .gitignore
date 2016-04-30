@@ -12,3 +12,7 @@ hs_err_pid*
 src/main/webapp/css/*.css
 src/main/webapp/js/*.js
 
+/.classpath
+/.project
+/.tern-project
+/.settings/*
