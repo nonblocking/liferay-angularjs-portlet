@@ -1,4 +1,4 @@
-AngularJS Portlet Demo v2
+AngularJS Portlet Demo v3
 =========================
 
 A Liferay portlet that just list all users and shows how AngularJS and Spring Portlet MVC can be used to create single page HTML5 portlets.
@@ -25,7 +25,6 @@ Just run **mvn package**
 ### On a Liferay 6.2 Portal
 
 Drop the generated _liferay-angularjs-portlet-*.war_ file in the_target_ directory into the *{liferay-home}/deploy* folder.
-
 Alternatively execute on the command line: **mvn liferay:deploy -D\<base_path_of_your_lifery_installation\>**
 
 ### Standalone
