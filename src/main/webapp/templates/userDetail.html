@@ -1,44 +1,46 @@
-<h3>Portal User: {{selectedUser.screenName}}</h3>
-<div>
-    <table class="angularjs-portlet-user-table">
-        <tr>
-            <td>Screen Name:</td>
-            <td>{{selectedUser.screenName}}</td>
-        </tr>
-        <tr class="even">
-            <td>EMail Address:</td>
-            <td>{{selectedUser.emailAddress}}</td>
-        </tr>
-        <tr>
-            <td>First Name:</td>
-            <td>{{selectedUser.firstName}}</td>
-        </tr>
-        <tr class="even">
-            <td>Last Name:</td>
-            <td>{{selectedUser.lastName}}</td>
-        </tr>
-        <tr>
-            <td>Last Login Date:</td>
-            <td>{{selectedUser.lastLoginDate | date}}</td>
-        </tr>
-        <tr class="even">
-            <td>Last Login IP:</td>
-            <td>{{selectedUser.lastLoginIp}}</td>
-        </tr>
-        <tr>
-            <td>Language:</td>
-            <td>{{selectedUser.languageId}}</td>
-        </tr>
-        <tr class="even">
-            <td>User Groups:</td>
-            <td>{{selectedUser.userGroups}}</td>
-        </tr>
-        <tr>
-            <td>Roles:</td>
-            <td>{{selectedUser.roles}}</td>
-        </tr>
-    </table>
-</div>
-<div class="angularjs-portlet-controls">
-    <a href="#" ng-click="showList()">Back</a>
+<div ng-controller="UserDetailController">
+    <h3>Portal User: {{selectedUser.screenName}}</h3>
+    <div>
+        <table class="ng1-portlet-user-table">
+            <tr>
+                <td>Screen Name:</td>
+                <td>{{selectedUser.screenName}}</td>
+            </tr>
+            <tr class="even">
+                <td>EMail Address:</td>
+                <td>{{selectedUser.emailAddress}}</td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td>{{selectedUser.firstName}}</td>
+            </tr>
+            <tr class="even">
+                <td>Last Name:</td>
+                <td>{{selectedUser.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Last Login Date:</td>
+                <td>{{selectedUser.lastLoginDate | date:'yyyy-MM-dd'}}</td>
+            </tr>
+            <tr class="even">
+                <td>Last Login IP:</td>
+                <td>{{selectedUser.lastLoginIp}}</td>
+            </tr>
+            <tr>
+                <td>Language:</td>
+                <td>{{selectedUser.languageId}}</td>
+            </tr>
+            <tr class="even">
+                <td>User Groups:</td>
+                <td>{{selectedUser.userGroups}}</td>
+            </tr>
+            <tr>
+                <td>Roles:</td>
+                <td>{{selectedUser.roles}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="angularjs-portlet-controls">
+        <a href="#" ng-click="showList()">Back</a>
+    </div>
 </div>

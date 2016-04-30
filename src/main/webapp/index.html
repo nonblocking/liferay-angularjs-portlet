@@ -7,12 +7,11 @@
 </head>
 
 <body>
-    <div id="angularjsPortletDemo" class="angularjs-portlet-demo" th:id="${portletId}" ng-controller="MainController">
-        <h2>AngularJS Portlet Demo v2</h2>
-        <p>Authenticated User: <strong>{{authenticatedUser}}</strong></p>
 
-        <div ng-include="currentTemplate.url">
-        </div>
+    <div id="ng1PortletDemo" class="ng1-portlet-demo" th:id="${portletId}" ng-controller="MainController">
+        <h2>AngularJS Portlet Demo v3</h2>
+        <p>Authenticated User: <strong>{{authenticatedUser}}</strong></p>
+        <router-view>Loading...</router-view>
     </div>
 
     <!-- Bootstrap Angular -->
@@ -30,21 +29,19 @@
             }
 
             function startAngular() {
-                var ajaxURL = /*[[${ajaxURL}]]*/ "/testdata/";
-                var isStandalone = /*[[${standalone}]]*/ true;
-                var authenticatedUser = /*[[${authenticatedUser}]]*/ "anonymous";
-                var portletId = /*[[${portletId}]]*/ 'angularjsPortletDemo';
-                var portletAppContextPath = /*[[${portletAppContextPath}]]*/ '';
+                var portletConfig = {
+                    ajaxUrl: /*[[${ajaxURL}]]*/ "/testdata/",
+                    isStandalone: /*[[${standalone}]]*/ true,
+                    authenticatedUser: /*[[${authenticatedUser}]]*/ "anonymous",
+                    portletId: /*[[${portletId}]]*/ 'ng1PortletDemo',
+                    portletAppContextPath: /*[[${portletAppContextPath}]]*/ ''
+                };
 
-                var app = angular.module('angularjsPortletDemo');
-                app.constant('ajaxUrl', ajaxURL);
-                app.constant('isStandalone', isStandalone);
-                app.constant('authenticatedUser', authenticatedUser);
-                app.constant('portletId', portletId);
-                app.constant('portletAppContextPath', portletAppContextPath);
+                var app = angular.module('nonblocking.ng1.portletDemo');
+                app.constant('portletConfig', portletConfig);
 
-                var appRootElem = document.getElementById(portletId);
-                angular.bootstrap(appRootElem, ['angularjsPortletDemo']);
+                var appRootElem = document.getElementById(portletConfig.portletId);
+                angular.bootstrap(appRootElem, ['nonblocking.ng1.portletDemo']);
             }
         })();
     </script>

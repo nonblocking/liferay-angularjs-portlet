@@ -1,26 +1,28 @@
-<h3>Portal User List</h3>
-<div>
-    <table class="angularjs-portlet-user-table">
-        <tr>
-            <th>Screen Name</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>EMail Address</th>
-            <th></th>
-        </tr>
-        <tr ng-repeat="user in users" ng-class-even="'even'">
-            <td>{{user.screenName}}</td>
-            <td>{{user.firstName}}</td>
-            <td>{{user.lastName}}</td>
-            <td>{{user.emailAddress}}</td>
-            <td><a href="#" ng-click="showDetails(user.userId)">Details</a></td>
-        </tr>
-    </table>
-</div>
-<div class="angularjs-portlet-controls">
-    Page {{currentPage + 1}} of {{totalPages()}}
-    &nbsp;
-    <a href="#" ng-click="previousPage()" ng-class="{ 'disabled': isFirstPage() }">Previous Page</a>
-    |
-    <a href="#" ng-click="nextPage()" ng-class="{ 'disabled': isLastPage() }">Next Page</a>
+<div ng-controller="UserListController">
+    <h3>Portal User List</h3>
+    <div>
+        <table class="ng1-portlet-user-table">
+            <tr>
+                <th>Screen Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>EMail Address</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="user in users" ng-class-even="'even'">
+                <td>{{user.screenName}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.emailAddress}}</td>
+                <td><a href="" ng-click="showDetails(user.userId)">Details</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="ng1-portlet-controls">
+        Page {{currentPage + 1}} of {{totalPages()}}
+        &nbsp;
+        <a href="#" ng-click="previousPage()" ng-class="{ 'disabled': isFirstPage() }">Previous Page</a>
+        |
+        <a href="#" ng-click="nextPage()" ng-class="{ 'disabled': isLastPage() }">Next Page</a>
+    </div>
 </div>

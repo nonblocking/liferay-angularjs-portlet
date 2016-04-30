@@ -1,11 +1,16 @@
 
 var jsApp = [
     'src/main/javascript/app.js',
-    'src/main/javascript/backend.js'
+    'src/main/javascript/controllers/main_controller.js',
+    'src/main/javascript/controllers/user_list_controller.js',
+    'src/main/javascript/controllers/user_detail_controller.js',
+    'src/main/javascript/directives/router_view.js',
+    'src/main/javascript/services/router.js',
+    'src/main/javascript/services/backend.js'
 ];
 
 var jsVendor = [
-    'bower_components/angular/angular.min.js'
+    'node_modules/angular/angular.min.js'
 ];
 
 module.exports = function(grunt) {
@@ -82,14 +87,14 @@ module.exports = function(grunt) {
                     livereload : true
                 },
                 html : {
-                    files : [ 'src/main/webapp/*.html' ]
+                    files : [ 'src/main/webapp/*.html', 'src/main/webapp/templates/*.html' ]
                 },
                 css : {
-                    files : [ 'src/main/sass/*.scss' ],
+                    files : [ 'src/main/sass/**/*.scss' ],
                     tasks : [ 'sass:dev' ]
                 },
                 js : {
-                    files : [ 'src/main/javascript/*.js' ],
+                    files : [ 'src/main/javascript/**/*.js' ],
                     tasks : [ 'jshint', 'concat:jsApp' ]
                 }
             }
