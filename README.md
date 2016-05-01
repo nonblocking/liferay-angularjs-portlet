@@ -13,7 +13,7 @@ The demonstrator consists of two parts:
 
 ### Prerequisites
 * [Maven](https://maven.apache.org/) build tool (should come with your favorite IDE)
-* [node.js](http://nodejs.org/) to build and run the HTML5/JavaScript code
+* [node.js](http://nodejs.org/) and [Grunt](http://gruntjs.com/) to build and run the HTML5/JavaScript code
 * [SASS](http://sass-lang.com/) to compile the Sassy CSS into CSS
 
 ### Create the WAR file
@@ -29,7 +29,7 @@ Alternatively execute on the command line: **mvn liferay:deploy -D\<base_path_of
 
 ### Standalone
 
-Run **grunt server** in the root directory of the project. The webapp will be available on *localhost:9000*.
+Run **npm install** and **grunt server** in the root directory of the project. The webapp will be available on *localhost:9000*.
 
 ## Notes
 

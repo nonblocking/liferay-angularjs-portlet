@@ -1,7 +1,10 @@
 
 .idea
 *.iml
-.sass-cache
+.classpath
+.project
+.settings/*
+sass-cache
 bower_components
 node_modules
 target
