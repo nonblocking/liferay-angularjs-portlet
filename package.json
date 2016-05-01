@@ -1,21 +1,21 @@
 {
-    "name": "liferay-angularjs-portlet",
-    "version": "3.0.0",
-    "dependencies": {
-        "angular": "1.4.10"
-    },
-    "devDependencies": {
-        "grunt": "1.0.1",
-        "grunt-contrib-watch": "1.0.0",
-        "grunt-contrib-jshint": "1.0.0",
-        "grunt-contrib-sass": "1.0.0",
-        "grunt-contrib-connect": "1.0.2",
-        "grunt-contrib-uglify": "1.0.1",
-        "grunt-contrib-concat": "1.0.1",
-        "grunt-ng-annotate": "2.0.2"
-    },
-    "scripts": {
-        "dist": "grunt dist",
-        "run": "grunt server"
-    }
+  "name": "liferay-angularjs-portlet",
+  "version": "3.0.0",
+  "dependencies": {
+    "angular": "1.4.10"
+  },
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "1.0.1",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-ng-annotate": "2.0.2"
+  },
+  "scripts": {
+    "dist": "grunt dist",
+    "run": "grunt server"
+  }
 }

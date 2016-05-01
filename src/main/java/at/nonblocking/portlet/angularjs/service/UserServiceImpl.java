@@ -5,10 +5,10 @@ import at.nonblocking.portlet.angularjs.model.UserDetail;
 import at.nonblocking.portlet.angularjs.model.UserList;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.model.Role;
-import com.liferay.portal.model.UserGroup;
-import com.liferay.portal.service.UserLocalService;
-import com.liferay.portal.service.UserLocalServiceUtil;
+import com.liferay.portal.kernel.model.Role;
+import com.liferay.portal.kernel.model.UserGroup;
+import com.liferay.portal.kernel.service.UserLocalService;
+import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.inject.Named;
@@ -34,10 +34,10 @@ public class UserServiceImpl implements UserService {
         int start = Math.min(startIndex, usersTotal);
         int end = Math.min(startIndex + limit, usersTotal);
 
-        List<com.liferay.portal.model.User> portalUsers = this.liferayUserService.getUsers(start, end);
+        List<com.liferay.portal.kernel.model.User> portalUsers = this.liferayUserService.getUsers(start, end);
         List<User> users = new ArrayList<>();
 
-        for (com.liferay.portal.model.User portalUser : portalUsers) {
+        for (com.liferay.portal.kernel.model.User portalUser : portalUsers) {
             users.add(new User(portalUser.getUserId(), portalUser.getScreenName(), portalUser.getFirstName(), portalUser.getLastName(), portalUser.getEmailAddress()));
         }
 
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
 
   public UserDetail getPortalUserDetail(long userId) throws SystemException, PortalException {
-    com.liferay.portal.model.User liferayUser = this.liferayUserService.getUser(userId);
+    com.liferay.portal.kernel.model.User liferayUser = this.liferayUserService.getUser(userId);
 
     UserDetail userDetail = new UserDetail();
     userDetail.setScreenName(liferayUser.getScreenName());
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     return userDetail;
   }
 
-  private String toCommaSeparatedUserGroupList(com.liferay.portal.model.User liferayUser)throws SystemException {
+  private String toCommaSeparatedUserGroupList(com.liferay.portal.kernel.model.User liferayUser)throws SystemException {
     List<String> userGroupNames = new ArrayList<>();
     for (UserGroup userGroup : liferayUser.getUserGroups()) {
       userGroupNames.add(userGroup.getName());
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
     return StringUtils.join(userGroupNames, ",");
   }
 
-  private String toCommaSeparatedRoleList(com.liferay.portal.model.User liferayUser)throws SystemException {
+  private String toCommaSeparatedRoleList(com.liferay.portal.kernel.model.User liferayUser)throws SystemException {
     List<String> roleNames = new ArrayList<>();
     for (Role role : liferayUser.getRoles()) {
       roleNames.add(role.getName());
