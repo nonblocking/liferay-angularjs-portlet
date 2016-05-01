@@ -9,7 +9,7 @@ angular.module('nonblocking.ng1.portletDemo', [
 
     .config(function(routerProvider, portletConfig) {
 
-        routerProvider.setTemplates([
+        routerProvider.config([
             { name: "userList", url: portletConfig.portletAppContextPath + "templates/userList.html" },
             { name: "userDetail", url: portletConfig.portletAppContextPath + "templates/userDetail.html" }
         ]);

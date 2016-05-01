@@ -3,7 +3,7 @@
 
 angular.module('nonblocking.ng1.portletDemo.userListController', [ 'nonblocking.ng1.portletDemo.backend' ])
 
-    .controller('UserListController', function ($scope, backend) {
+    .controller('UserListController', function ($scope, backend, router) {
         $scope.entriesPerPage = 10;
         $scope.currentPage = 0;
         $scope.totalEntries = 0;
@@ -33,6 +33,12 @@ angular.module('nonblocking.ng1.portletDemo.userListController', [ 'nonblocking.
                 $scope.currentPage -= 1;
                 $scope.loadUsers();
             }
+        };
+
+        $scope.showDetails = function(userId) {
+            router.goto('userDetail', {
+                selectedUserId: userId
+            });
         };
 
         $scope.loadUsers = function() {

@@ -6,8 +6,9 @@ angular.module('nonblocking.ng1.portletDemo.router', [])
 
         var templates = [];
         var currentTemplate = null;
+        var params = null;
 
-        this.setTemplates = function(ts) {
+        this.config = function(ts) {
             templates = ts;
             if (!currentTemplate && templates && templates.length > 0) {
                 currentTemplate = templates[0];
@@ -16,12 +17,21 @@ angular.module('nonblocking.ng1.portletDemo.router', [])
 
         this.$get = function() {
             return {
-                goto: function (name) {
+                goto: function (name, ps) {
                     angular.forEach(templates, function (template) {
                         if (template.name === name) {
                             currentTemplate = template;
                         }
                     });
+                    if (ps) {
+                        params = ps;
+                    } else {
+                        params = {};
+                    }
+                },
+
+                getParams: function() {
+                    return params;
                 },
 
                 getTemplateUrl: function () {

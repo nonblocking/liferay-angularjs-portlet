@@ -9,6 +9,6 @@ target
 hs_err_pid*
 
 #Generated resources
-src/main/webapp/css/*.css
-src/main/webapp/js/*.js
+src/main/webapp/css/*
+src/main/webapp/js/*
 
